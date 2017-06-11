@@ -8,14 +8,16 @@
 
 import UIKit
 
-class TweetViewController: UIViewController, UITableViewDataSource {
+class TweetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
   var tweets:[Tweet]!
+  var user: User!
 
   @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.delegate = self
+        tableView.delegate = self
         tableView.dataSource = self
         
         // Do any additional setup after loading the view.
@@ -30,8 +32,12 @@ class TweetViewController: UIViewController, UITableViewDataSource {
         
 
     }
+
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+    cell.tweet = tweets[indexPath.row]
+
     return cell
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,6 +47,8 @@ class TweetViewController: UIViewController, UITableViewDataSource {
     return 0
     }
   }
+
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -52,14 +60,21 @@ class TweetViewController: UIViewController, UITableViewDataSource {
   }
 
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)
+        let tweet = tweets?[(indexPath?.row)!]
+
+        let detailViewController = segue.destination as! DetailViewController
+        detailViewController.tweet = tweet
+        print("prepare")
     }
-    */
+
 
 }
