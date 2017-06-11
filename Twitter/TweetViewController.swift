@@ -22,10 +22,8 @@ class TweetViewController: UIViewController, UITableViewDataSource {
 
         TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
           self.tweets = tweets
-          for tweet in tweets{
-            print(tweet.text)
-          }
           self.tableView.reloadData()
+
         }, failure: { (error:Error) in
           print("error")
         })
@@ -37,7 +35,11 @@ class TweetViewController: UIViewController, UITableViewDataSource {
     return cell
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if let tweets = tweets {
+      return tweets.count
+    }else{
     return 0
+    }
   }
 
     override func didReceiveMemoryWarning() {
