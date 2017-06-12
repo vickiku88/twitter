@@ -24,9 +24,13 @@ class DetailCell: UITableViewCell {
     didSet{
       if let tweet = tweet{
         if let timestampString = tweet.timestamp{
+          print(timestampString)
           let formatter = DateFormatter()
           formatter.dateFormat = "MM/dd/yy"
           detDateLabel.text = formatter.string(from: timestampString as Date)
+
+          formatter.dateFormat = "H:mm a"
+          detTimeLabel.text = formatter.string(from: timestampString as Date)
 
         }
         if let text = tweet.text {

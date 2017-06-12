@@ -18,6 +18,8 @@
 		5B5097971EED267D000820F6 /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1F65E1EECB7AE00747966 /* TweetViewController.swift */; };
 		5B5097991EED2F4D000820F6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5097981EED2F4D000820F6 /* DetailViewController.swift */; };
 		5B50979B1EEE0823000820F6 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50979A1EEE0823000820F6 /* DetailCell.swift */; };
+		5B50979D1EEE4A06000820F6 /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50979C1EEE4A06000820F6 /* ReplyViewController.swift */; };
+		5B50979F1EEE4A1B000820F6 /* ReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50979E1EEE4A1B000820F6 /* ReplyCell.swift */; };
 		5BA3A27C1EEBB8B500EDEA5A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3A27B1EEBB8B500EDEA5A /* LoginViewController.swift */; };
 		5BF1F6541EECA01700747966 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1F6531EECA01700747966 /* User.swift */; };
 		5BF1F6561EECA01E00747966 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1F6551EECA01E00747966 /* Tweet.swift */; };
@@ -61,6 +63,8 @@
 		5B5097951EED1857000820F6 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		5B5097981EED2F4D000820F6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5B50979A1EEE0823000820F6 /* DetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
+		5B50979C1EEE4A06000820F6 /* ReplyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
+		5B50979E1EEE4A1B000820F6 /* ReplyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyCell.swift; sourceTree = "<group>"; };
 		5BA3A27B1EEBB8B500EDEA5A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5BF1F6531EECA01700747966 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5BF1F6551EECA01E00747966 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 			children = (
 				5B5097951EED1857000820F6 /* TweetCell.swift */,
 				5B50979A1EEE0823000820F6 /* DetailCell.swift */,
+				5B50979E1EEE4A1B000820F6 /* ReplyCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				5BA3A27B1EEBB8B500EDEA5A /* LoginViewController.swift */,
 				5BF1F65E1EECB7AE00747966 /* TweetViewController.swift */,
 				5B5097981EED2F4D000820F6 /* DetailViewController.swift */,
+				5B50979C1EEE4A06000820F6 /* ReplyViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -500,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BA3A27C1EEBB8B500EDEA5A /* LoginViewController.swift in Sources */,
+				5B50979D1EEE4A06000820F6 /* ReplyViewController.swift in Sources */,
 				5B5097961EED1857000820F6 /* TweetCell.swift in Sources */,
 				5B50979B1EEE0823000820F6 /* DetailCell.swift in Sources */,
 				5B06A8E61EEBB2710080C7C9 /* AppDelegate.swift in Sources */,
@@ -508,6 +515,7 @@
 				5BF1F6541EECA01700747966 /* User.swift in Sources */,
 				5BF1F65D1EECA77100747966 /* TwitterClient.swift in Sources */,
 				5B5097991EED2F4D000820F6 /* DetailViewController.swift in Sources */,
+				5B50979F1EEE4A1B000820F6 /* ReplyCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

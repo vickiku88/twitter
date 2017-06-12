@@ -16,11 +16,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+      super.viewDidLoad()
       tableView.delegate = self
       tableView.dataSource = self
+      //tableView.register("ReplyCell", forCellReuseIdentifier: "ReplyCell")
 
-      print(tweet?.name)
+
         // Do any additional setup after loading the view.
     }
 
@@ -33,19 +34,36 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCell
+    cell.tweet = self.tweet
+    cell.accessoryType = UITableViewCellAccessoryType.none
+
 
     return cell
   }
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+
+  }
 
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      //currently learning how to segue from a button. the following isn't complete
+      let cell = sender as! UITableViewCell
+      let indexPath = tableView.indexPath(for: cell)
+      let tweet = self.tweet
+      print(tweet)
+
+      let replyViewController = segue.destination as! ReplyViewController
+      replyViewController.tweet = tweet
+      print("prepare for next, Reply")
+
+
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }

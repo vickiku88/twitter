@@ -16,10 +16,6 @@ class TweetCell: UITableViewCell {
   @IBOutlet weak var hoursPosted: UILabel!
   @IBOutlet weak var tweetText: UILabel!
 
-  @IBOutlet weak var replyImg: UIImageView!
-  @IBOutlet weak var retweetImg: UIImageView!
-  @IBOutlet weak var starImg: UIImageView!
-
 
   var tweet:Tweet?{
     didSet{
@@ -31,13 +27,17 @@ class TweetCell: UITableViewCell {
           let formatter = DateFormatter()
           formatter.dateFormat = "MM/dd/yy"
 
-          hoursPosted.text = formatter.string(from: timestampString as Date)
+          //hoursPosted.text = formatter.string(from: timestampString as Date)
+
+          let elapsed = Int(Date().timeIntervalSince(timestampString))
+          print(elapsed/60)
+          hoursPosted.text = String(elapsed/60) + "m"
         }
         if let name = tweet.name{
           nameLabel.text = name
         }
         if let screenname = tweet.screenname{
-          screenLabel.text = screenname
+          screenLabel.text = "@" + screenname
         }
         if let profileImgURL = tweet.profileImg{
           profileImg.setImageWith(profileImgURL)
@@ -45,6 +45,7 @@ class TweetCell: UITableViewCell {
         }
 
 
+        
 
 
       }
