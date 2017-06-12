@@ -20,6 +20,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
       tableView.delegate = self
       tableView.dataSource = self
       //tableView.register("ReplyCell", forCellReuseIdentifier: "ReplyCell")
+      navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reply", style: .plain, target: self, action: #selector(ProfileButtonTapped))
 
 
         // Do any additional setup after loading the view.
@@ -45,8 +46,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
   }
 
+  func ProfileButtonTapped() {
+    print("Button Tapped")
+    performSegue(withIdentifier: "ReplySegue", sender: self)
+    //If you want pass data while segue you can use prepare segue method
+  }
 
-    // MARK: - Navigation
+/*
+  // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -64,6 +71,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-
+*/
 
 }

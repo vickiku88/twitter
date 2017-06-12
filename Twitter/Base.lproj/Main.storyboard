@@ -323,7 +323,7 @@
                     <navigationItem key="navigationItem" id="LmV-3z-vLS">
                         <barButtonItem key="rightBarButtonItem" title="Reply" id="3CW-tF-WcV">
                             <connections>
-                                <segue destination="tgb-N3-3TH" kind="push" id="JEH-aB-bwO"/>
+                                <segue destination="tgb-N3-3TH" kind="push" identifier="ReplySegue" id="JEH-aB-bwO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
