@@ -8,12 +8,19 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-  var tweet: Tweet!
+class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+
+  @IBOutlet weak var tableView: UITableView!
+  var tweet: Tweet?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+      tableView.delegate = self
+      tableView.dataSource = self
 
+      print(tweet?.name)
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +28,15 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCell
+
+    return cell
+  }
+
 
     /*
     // MARK: - Navigation
