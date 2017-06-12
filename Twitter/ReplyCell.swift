@@ -20,7 +20,7 @@ class ReplyCell: UITableViewCell {
   var tweet: Tweet?{
     didSet {
       if let tweet = tweet{
-        print(tweet)
+        print("tweet:",tweet)
         if let name = tweet.name {
           nameLabel.text = name
         }

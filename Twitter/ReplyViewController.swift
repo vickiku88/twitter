@@ -38,6 +38,13 @@ class ReplyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     return 1
   }
 
+  
+  @IBAction func onCancel(_ sender: Any) {
+    //self.dismiss(animated: true, completion: nil);
+    navigationController!.popViewController(animated: true)
+    print("cancel")
+  }
+
   /*
     // MARK: - Navigation
 

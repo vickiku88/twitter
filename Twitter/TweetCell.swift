@@ -30,7 +30,6 @@ class TweetCell: UITableViewCell {
           //hoursPosted.text = formatter.string(from: timestampString as Date)
 
           let elapsed = Int(Date().timeIntervalSince(timestampString))
-          print(elapsed/60)
           hoursPosted.text = String(elapsed/60) + "m"
         }
         if let name = tweet.name{

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AFNetworking
+import MBProgressHUD
 
 class TweetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -19,8 +21,15 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
+
+       // tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 200
+
         // Do any additional setup after loading the view.
+      let refreshControl = UIRefreshControl()
+      refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: .valueChanged)
+      tableView.insertSubview(refreshControl, at: 0)
+
 
         TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
           self.tweets = tweets
@@ -32,6 +41,28 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
         
 
     }
+
+  func refreshControlAction(_ refreshControl: UIRefreshControl) {
+    TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) -> () in
+      self.tweets = tweets
+
+      // Reload the tableView now that there is new data
+      self.tableView.reloadData()
+
+      // Tell the refreshControl to stop spinning
+      refreshControl.endRefreshing()
+
+    }, failure: { (error: Error) -> () in
+      print(error.localizedDescription)
+      // Reload the tableView now that there is new data
+      self.tableView.reloadData()
+
+      // Tell the refreshControl to stop spinning
+      refreshControl.endRefreshing()
+    })
+
+
+  }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
 
@@ -41,8 +72,11 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
     let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
     cell.accessoryType = UITableViewCellAccessoryType.none
     cell.tweet = tweets[indexPath.row]
+    cell.sizeToFit()
+    cell.layoutIfNeeded()
+    cell.setNeedsUpdateConstraints()
+    cell.updateConstraintsIfNeeded()
 
-  
 
     return cell
   }
@@ -65,7 +99,9 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
     TwitterClient.sharedInstance?.logout()
   }
 
-
+ /* private func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return UITableViewAutomaticDimension
+  }*/
 
     // MARK: - Navigation
 
