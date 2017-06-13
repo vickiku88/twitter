@@ -21,9 +21,10 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+      tableView.rowHeight = UITableViewAutomaticDimension
+      //print(UITableViewAutomaticDimension)
+      self.tableView.estimatedRowHeight = 200
 
-       // tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 200
 
         // Do any additional setup after loading the view.
       let refreshControl = UIRefreshControl()
@@ -72,11 +73,7 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
     let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
     cell.accessoryType = UITableViewCellAccessoryType.none
     cell.tweet = tweets[indexPath.row]
-    cell.sizeToFit()
-    cell.layoutIfNeeded()
-    cell.setNeedsUpdateConstraints()
-    cell.updateConstraintsIfNeeded()
-
+    
 
     return cell
   }
@@ -87,7 +84,6 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
     return 0
     }
   }
-
 
 
     override func didReceiveMemoryWarning() {
